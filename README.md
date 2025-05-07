@@ -1,7 +1,11 @@
-# crypto-payment-gateway
+# Crypto Payment Gateway
 
 A minimal **Next.js** + **TypeScript** service for accepting on-chain crypto payments (BTC, ETH, USDT/ERC-20) without a third-party gateway. Customers can pay exactly the invoice amount to one of two rotating deposit addresses per network, and the backend will detect & confirm the on-chain transfer automatically.
 
+---
+## ⚠️ VERY IMPORTANT NOTES
+
+> This software is for educational and testing purposes only. USE THE SOFTWARE AT YOUR OWN RISK. THE AUTHORS AND ALL AFFILIATES ASSUME NO RESPONSIBILITY FOR YOUR SOFTWARE USE.
 ---
 
 ## 🚀 Features
