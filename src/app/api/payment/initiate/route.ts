@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
   const counts = await Promise.all(
     pool.map(addr =>
       supabase
-        .from("press_releases")
+        .from("Supabase_Table")
         .select("*", { count: "exact" })
         .eq("deposit_address", addr)
         .neq("payment_status", "paid")
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
 
   // update row
   const { data, error } = await supabase
-    .from("press_releases")
+    .from("Supabase_Table")
     .update({
       currency,
       network,

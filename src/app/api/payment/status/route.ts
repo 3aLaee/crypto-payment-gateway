@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   }
 
   const { data: order, error } = await supabase
-    .from("press_releases")
+    .from("Supabase_Table")
     .select("*")
     .eq("id", orderId)
     .single();
@@ -77,7 +77,7 @@ export async function GET(req: NextRequest) {
 
   if (confirmed) {
     await supabase
-      .from("press_releases")
+      .from("Supabase_Table")
       .update({
         payment_status: "paid",
         paid_at: new Date().toISOString()
