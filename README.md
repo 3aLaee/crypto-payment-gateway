@@ -69,7 +69,7 @@ A minimal **Next.js** + **TypeScript** service for accepting on-chain crypto pay
 - **Request JSON body**:
   ```json
   {
-    "orderId": "<uuid-of-press_release-row>",
+    "orderId": "<uuid-of-TABLE-row>",
     "currency": "usdt" | "eth" | "btc",
     "network": "erc20" | "eth-mainnet" | "btc-mainnet",
     "amountDue": 15.00
@@ -79,7 +79,7 @@ What it does:
 - Converts `amountDue` into on-chain base units (satoshis, wei, or USDT decimals)
 - Rotates between two deposit addresses for that currency
 - Reads current on-chain block & starting balance
-- Updates your Supabase `press_releases` row with: `deposit_address`, `start_block`, `start_balance`, `payment_status='pending'`
+- Updates your Supabase `TABLE` row with: `deposit_address`, `start_block`, `start_balance`, `payment_status='pending'`
 - Returns:
   {
     "orderId": "...",
