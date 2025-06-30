@@ -8,27 +8,16 @@ describe("🚀 Payment gateway integration", () => {
   let orderId: string;
 
   beforeAll(async () => {
-    // 1) Create a minimal press_release row so initiate can update it
+    // 1) Create a table row so initiate can update it
     const { data, error } = await supabase
-      .from("press_releases")
+      .from("table")
       .insert([
         {
           user_id: "test-user",
           client_id: "test-client",
-          distribution_time: "immediate",
-          // supply required non-null fields:
-          location_city: "TestCity",
           location_country: "TestLand",
-          press_release_title: "Test",
-          featured_image_url: "https://example.com/img.png",
-          press_release_content: "Lorem ipsum",
-          confirm_editorial_guidelines: true,
-          confirm_no_modifications: true,
-          tags: [],
           package: "lite",
           addons: [],
-          trading_symbol: null,
-          related_exchange: null,
           contact_full_name: "Tester",
           contact_title: null,
           contact_company: null,
@@ -69,7 +58,7 @@ describe("🚀 Payment gateway integration", () => {
 
     // DB should now have payment_status = "pending"
     const { data: updated } = await supabase
-      .from("press_releases")
+      .from("table")
       .select("payment_status")
       .eq("id", orderId)
       .single();
@@ -89,7 +78,7 @@ describe("🚀 Payment gateway integration", () => {
 
     // 2) simulate on‐chain capture by marking row paid
     const { error } = await supabase
-      .from("press_releases")
+      .from("table")
       .update({ payment_status: "paid" })
       .eq("id", orderId);
     if (error) throw new Error("Failed to simulate payment: " + error.message);
